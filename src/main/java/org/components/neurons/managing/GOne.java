@@ -9,15 +9,6 @@ package org.components.neurons.managing;
  * Neuron-receiver to activate comparative layer if object not empty.
  */
 public class GOne {
-    private boolean inhibited;
-
-    public boolean isInhibited() {
-        return inhibited;
-    }
-
-    public void setInhibited(boolean inhibited) {
-        this.inhibited = inhibited;
-    }
 
     private boolean isInhibited(int[] recognitionOutput) {
         for (int i = 0; i < recognitionOutput.length; i++) {
@@ -29,7 +20,7 @@ public class GOne {
     }
 
     public int activate(int[] object, int[] recognitionOutput) {
-        if (!isInhibited()) {
+        if (!isInhibited(recognitionOutput)) {
             for (int i = 0; i < object.length; i++) {
                 if (object[i] == 1) {
                     return 1;
