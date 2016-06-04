@@ -8,27 +8,27 @@ public class Constants {
     /**
      * Constant for initializing of the bottom-top weights.
      */
-    private static final int L = 2;
+    public static final int L = 2;
 
     /**
      * Max. number of classes.
      */
-    private static final int M = 4;
+    public static final int M = 4;
 
     /**
      * Size of  input vectors.
      */
-    private static final int N = 5;
+    public static final int N = 5;
 
     /**
      * Number of input objects.
      */
-    private static final int Q = 4;
+    public static final int Q = 4;
 
     /**
      * Similarity parameter.
      */
-    private static final double P = 0.45;
+    public static final double P = 0.45;
 
     private Constants() {
         super();
