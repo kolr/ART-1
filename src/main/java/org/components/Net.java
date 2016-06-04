@@ -5,4 +5,17 @@ package org.components;
  * Created by Rodion.
  */
 public class Net {
+    private ComparativeLayer comparativeLayer;
+    private RecognitionLayer recognitionLayer;
+    private InputLayer inputLayer;
+
+    public void start(int[] object) {
+        inputLayer.setNewObject(object);
+    }
+
+    private void sendObjectTo() {
+        
+    }
+
+
 }
