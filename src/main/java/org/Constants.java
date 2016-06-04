@@ -13,7 +13,7 @@ public class Constants {
     /**
      * Max. number of classes.
      */
-    public static final int M = 4;
+    public static final int M = 10;
 
     /**
      * Size of  input vectors.

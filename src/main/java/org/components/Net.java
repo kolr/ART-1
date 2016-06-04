@@ -11,24 +11,44 @@ import org.components.neurons.managing.GTwo;
 public class Net {
     private ComparativeLayer comparativeLayer;
     private RecognitionLayer recognitionLayer;
-    private InputLayer inputLayer;
     private GOne gOne;
     private GTwo gTwo;
 
     public Net() {
         comparativeLayer = new ComparativeLayer();
         recognitionLayer = new RecognitionLayer();
-        inputLayer = new InputLayer();
         gOne = new GOne();
         gTwo = new GTwo();
     }
 
     public void start(int[] object) {
-        inputLayer.setNewObject(object);
+        recognitionLayer.initializeStatuses();
+        System.out.println("Object");
+        for (int i = 0; i < object.length; i++) {
+            System.out.print(object[i] + " ");
+        }
         int gOneValue = gOne.activate(object, recognitionLayer.getRecognitionLayerOutput());
         int gTwoValue = gTwo.activate(object);
         if (gOneValue == 1) {
             comparativeLayer.determineComparativeOutput(object);
+            double[] in = determineRecognitionLayerInput(comparativeLayer.getComparativeLayerOutput(), comparativeLayer.getBottomTopWeights());
+            System.out.println("Cluster:" + searchCluster(object, in));
+        }
+    }
+
+    private int searchCluster(int[] object, double[] in) {
+
+        int appropriateCluster = recognitionLayer.chooseCluster(in);
+        int[] comparativeOutput = recognitionLayer.determineComparativeOutput(object, appropriateCluster);
+        int similarity = getSumOfVector(comparativeOutput) / getSumOfVector(object);
+        System.out.print(" similarity: " + similarity + " ");
+        if (similarity < Constants.P) {
+            recognitionLayer.setStatus(appropriateCluster, -1);
+            return searchCluster(object, in);
+        } else {
+            comparativeLayer.changeBottomTopWeights(comparativeOutput, appropriateCluster);
+            recognitionLayer.changeTopBottomWeights(comparativeOutput, appropriateCluster);
+            return appropriateCluster;
         }
     }
 
@@ -45,6 +65,14 @@ public class Net {
             }
         }
         return result;
+    }
+
+    public static int getSumOfVector(int[] vector) {
+        int res = 0;
+        for (int i = 0; i < vector.length; i++) {
+            res += vector[i];
+        }
+        return res;
     }
 
 }

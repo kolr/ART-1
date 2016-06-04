@@ -25,6 +25,12 @@ public class ComparativeLayer {
         }
     }
 
+    public void changeBottomTopWeights(int[] zOut, int cluster) {
+        for (int j = 0; j < Constants.N; j++) {
+            this.bottomTopWeights[cluster][j] = (double) (Constants.L * zOut[j]) / (Constants.L - 1 + Net.getSumOfVector(zOut));
+        }
+    }
+
     public void determineComparativeOutput(int[] object) {
         System.arraycopy(object, 0, comparativeLayerOutput, 0, comparativeLayerOutput.length);
     }
