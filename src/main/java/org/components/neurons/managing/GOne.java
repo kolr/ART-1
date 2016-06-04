@@ -19,8 +19,17 @@ public class GOne {
         this.inhibited = inhibited;
     }
 
-    public int activate(int[] object) {
-        if (!inhibited) {
+    private boolean isInhibited(int[] recognitionOutput) {
+        for (int i = 0; i < recognitionOutput.length; i++) {
+            if (recognitionOutput[i] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int activate(int[] object, int[] recognitionOutput) {
+        if (!isInhibited()) {
             for (int i = 0; i < object.length; i++) {
                 if (object[i] == 1) {
                     return 1;
