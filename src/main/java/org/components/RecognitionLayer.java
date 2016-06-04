@@ -23,6 +23,12 @@ public class RecognitionLayer {
         }
     }
 
+    public void initializeRecognitionLayerOutput() {
+        for (int i = 0; i < Constants.M; i++) {
+            this.recognitionLayerOutput[i] = 0;
+        }
+    }
+
     public double[][] getTopBottomWeights() {
         return this.topBottomWeights;
     }
