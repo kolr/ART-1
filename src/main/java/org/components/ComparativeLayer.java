@@ -12,13 +12,13 @@ public class ComparativeLayer {
 
     public ComparativeLayer() {
         comparativeLayerOutput = new int[Constants.N];
-        bottomTopWeights = new double[Constants.N][Constants.M];
+        bottomTopWeights = new double[Constants.M][Constants.N];
     }
 
     public void initializeBottomTopWeights() {
-        for (int i = 0; i < Constants.N; i++) {
-            for (int j = 0; j < Constants.M; j++) {
-                bottomTopWeights[i][j] = 1 / (Constants.N + 1);
+        for (int i = 0; i < Constants.M; i++) {
+            for (int j = 0; j < Constants.N; j++) {
+                this.bottomTopWeights[i][j] = (double) 1 / (Constants.N + 1);
             }
         }
     }
