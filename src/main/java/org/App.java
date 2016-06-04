@@ -1,5 +1,7 @@
 package org;
 
+import org.components.ComparativeLayer;
+
 /**
  * Hello world!
  *
@@ -7,6 +9,7 @@ package org;
 public class App 
 {
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+        ComparativeLayer comparativeLayer = new ComparativeLayer();
+        comparativeLayer.initializeBottomTopWeights();
     }
 }

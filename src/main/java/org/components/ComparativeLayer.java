@@ -22,4 +22,8 @@ public class ComparativeLayer {
             }
         }
     }
+
+    public double[][] getBottomTopWeights() {
+        return this.bottomTopWeights;
+    }
 }
