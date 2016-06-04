@@ -9,6 +9,7 @@ import org.Constants;
 public class ComparativeLayer {
     private int[] comparativeLayerOutput;
     private double[][] bottomTopWeights;
+    private boolean allowed;
 
     public ComparativeLayer() {
         comparativeLayerOutput = new int[Constants.N];
@@ -23,7 +24,15 @@ public class ComparativeLayer {
         }
     }
 
+    public void determineComparativeOutput(int[] object) {
+        System.arraycopy(object, 0, comparativeLayerOutput, 0, comparativeLayerOutput.length);
+    }
+
     public double[][] getBottomTopWeights() {
         return this.bottomTopWeights;
+    }
+
+    public int[] getComparativeLayerOutput() {
+        return comparativeLayerOutput;
     }
 }

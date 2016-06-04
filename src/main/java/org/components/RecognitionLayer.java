@@ -32,4 +32,8 @@ public class RecognitionLayer {
     public double[][] getTopBottomWeights() {
         return this.topBottomWeights;
     }
+
+    public int[] getRecognitionLayerOutput() {
+        return recognitionLayerOutput;
+    }
 }
