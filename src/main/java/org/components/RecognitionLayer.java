@@ -13,6 +13,8 @@ public class RecognitionLayer {
     public RecognitionLayer() {
         recognitionLayerOutput = new int[Constants.M];
         topBottomWeights = new double[Constants.M][Constants.N];
+        initializeRecognitionLayerOutput();
+        initializeTopBottomWeights();
     }
 
     public void initializeTopBottomWeights() {

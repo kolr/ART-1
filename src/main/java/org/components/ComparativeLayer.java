@@ -14,6 +14,7 @@ public class ComparativeLayer {
     public ComparativeLayer() {
         comparativeLayerOutput = new int[Constants.N];
         bottomTopWeights = new double[Constants.M][Constants.N];
+        initializeBottomTopWeights();
     }
 
     public void initializeBottomTopWeights() {

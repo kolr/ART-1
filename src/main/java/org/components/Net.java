@@ -25,19 +25,10 @@ public class Net {
 
     public void start(int[] object) {
         inputLayer.setNewObject(object);
-        System.out.println("object: ");
-        for (int i = 0; i < object.length; i++) {
-            System.out.print(object[i] + " ");
-        }
-        int inputLayerRate = inputLayer.getOutputRate();
-        System.out.println("Input Layer Rate: " + inputLayerRate);
-
-        comparativeLayer.initializeBottomTopWeights();
-        comparativeLayer.determineComparativeOutput(object);
-        double[] in = determineRecognitionLayerInput(comparativeLayer.getComparativeLayerOutput(), comparativeLayer.getBottomTopWeights());
-        System.out.println("Recognition Layer Inputs:");
-        for (int i = 0; i < Constants.M; i++) {
-            System.out.print(in[i] + " ");
+        int gOneValue = gOne.activate(object, recognitionLayer.getRecognitionLayerOutput());
+        int gTwoValue = gTwo.activate(object);
+        if (gOneValue == 1) {
+            comparativeLayer.determineComparativeOutput(object);
         }
     }
 
