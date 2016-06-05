@@ -34,16 +34,17 @@ public class Net {
             comparativeLayer.determineComparativeOutput(object);
             double[] in = determineRecognitionLayerInput(comparativeLayer.getComparativeLayerOutput(), comparativeLayer.getBottomTopWeights());
             System.out.println("Cluster:" + searchCluster(object, in));
+            System.out.println();
         }
     }
 
+    //TODO if all clusters blocked, return 0.
     private int searchCluster(int[] object, double[] in) {
-
         int appropriateCluster = recognitionLayer.chooseCluster(in);
         int[] comparativeOutput = recognitionLayer.determineComparativeOutput(object, appropriateCluster);
         System.out.println("Comparative output rank: " + getSumOfVector(comparativeOutput));
         System.out.println("Object output rank: " + getSumOfVector(object));
-        int similarity = getSumOfVector(comparativeOutput) / getSumOfVector(object);
+        double similarity = (double) getSumOfVector(comparativeOutput) / getSumOfVector(object);
         System.out.print(" similarity: " + similarity + " ");
         if (similarity < Constants.P) {
             recognitionLayer.setStatus(appropriateCluster, -1);

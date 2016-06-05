@@ -23,7 +23,8 @@ public class Constants {
     /**
      * Similarity parameter.
      */
-    public static final double P = 0.45;
+//    public static final double P = 0.45;
+    public static final double P = 0.8;
 
     private Constants() {
         super();
