@@ -3,23 +3,28 @@ package org.components;
 import org.Constants;
 import org.components.neurons.managing.GOne;
 import org.components.neurons.managing.GTwo;
+import org.springframework.context.annotation.ComponentScan;
+
+import javax.inject.Inject;
 
 /**
  * 04.06.2016
  * Created by Rodion.
  */
-public class Net {
-    private ComparativeLayer comparativeLayer;
-    private RecognitionLayer recognitionLayer;
-    private GOne gOne;
-    private GTwo gTwo;
 
-    public Net() {
-        comparativeLayer = new ComparativeLayer();
-        recognitionLayer = new RecognitionLayer();
-        gOne = new GOne();
-        gTwo = new GTwo();
-    }
+@ComponentScan
+public class Net {
+    @Inject
+    private ComparativeLayer comparativeLayer;
+
+    @Inject
+    private RecognitionLayer recognitionLayer;
+
+    @Inject
+    private GOne gOne;
+
+    @Inject
+    private GTwo gTwo;
 
     public void start(int[] object) {
         recognitionLayer.initializeStatuses();
@@ -53,10 +58,6 @@ public class Net {
             recognitionLayer.changeTopBottomWeights(comparativeOutput, appropriateCluster);
             return appropriateCluster;
         }
-    }
-
-    private void sendObjectTo() {
-
     }
 
     private double[] determineRecognitionLayerInput(int[] comparativeLayerOutput, double[][] bottomTopWeights) {

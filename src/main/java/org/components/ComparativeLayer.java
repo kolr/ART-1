@@ -9,7 +9,6 @@ import org.Constants;
 public class ComparativeLayer {
     private int[] comparativeLayerOutput;
     private double[][] bottomTopWeights;
-    private boolean allowed;
 
     public ComparativeLayer() {
         comparativeLayerOutput = new int[Constants.N];
