@@ -21,11 +21,6 @@ public class Constants {
     public static final int N = 5;
 
     /**
-     * Number of input objects.
-     */
-    public static final int Q = 4;
-
-    /**
      * Similarity parameter.
      */
     public static final double P = 0.45;
