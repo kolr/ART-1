@@ -9,6 +9,7 @@ import javax.inject.Inject;
 /**
  * 04.06.2016
  * Created by Rodion.
+ *
  */
 
 @ComponentScan
