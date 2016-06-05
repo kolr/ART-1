@@ -22,6 +22,13 @@ public class Net {
     @Inject
     private GOne gOne;
 
+    AdditionalLayer[] additionalLayers;
+
+    public Net() {
+        additionalLayers = new AdditionalLayer[Constants.M];
+        initializeAdditionalLayers();
+    }
+
     public void start(int[] object) {
         recognitionLayer.initializeStatuses();
         printWeights(comparativeLayer.getBottomTopWeights());
@@ -81,6 +88,12 @@ public class Net {
                 System.out.print(weightsMatrix[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    private void initializeAdditionalLayers() {
+        for (int i = 1; i <= this.additionalLayers.length; i++) {
+            additionalLayers[i - 1] = new AdditionalLayer(i);
         }
     }
 

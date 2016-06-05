@@ -39,7 +39,7 @@ public class Combinations {
 
     public static void main(String[] args) {
         String[] database = {"1", "2", "3", "4"};
-        String[] result = getAllLists(database, 2);
+        String[] result = getAllLists(database, 3);
         for (int j = 0; j < result.length; j++) {
             System.out.println(result[j]);
         }
