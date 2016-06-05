@@ -2,6 +2,7 @@ package org.components;
 
 import org.Constants;
 import org.components.neurons.AdditionalNeuron;
+import org.util.MathNetwork;
 
 /**
  * 05.06.2016
@@ -15,7 +16,7 @@ public class AdditionalLayer {
 
     AdditionalLayer(int index) {
         this.index = index;
-        this.numberOfNeurons = determineNumberOfNeurons(index);
+        this.numberOfNeurons = MathNetwork.countCombination(index, Constants.M);
         this.neurons = new AdditionalNeuron[this.numberOfNeurons];
     }
 
@@ -25,14 +26,5 @@ public class AdditionalLayer {
 
     public int[] getObjects() {
         return objects;
-    }
-
-    private int determineNumberOfNeurons(int index) {
-        return factorial(Constants.M) / (factorial(index) * factorial(Constants.M - index));
-    }
-
-    private int factorial(int n) {
-        if (n == 1) return 1;
-        return n * factorial(n - 1);
     }
 }
