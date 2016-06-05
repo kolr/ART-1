@@ -29,6 +29,14 @@ public class Combinations {
         }
     }
 
+    public static String[] generateStringArray(int q) {
+        String[] result = new String[q];
+        for (int i = 0; i < q; i++) {
+            result[i] = String.valueOf(i);
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         String[] database = {"1", "2", "3", "4"};
         String[] result = getAllLists(database, 2);

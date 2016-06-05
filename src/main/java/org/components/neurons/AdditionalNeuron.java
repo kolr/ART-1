@@ -5,12 +5,14 @@ package org.components.neurons;
  * Created by Rodion.
  */
 public class AdditionalNeuron {
+    private int value;
     private int index;
     private boolean activated;
     private int numberOfInputs;
     private int[] objs;
 
     public AdditionalNeuron(int index, int numberOfInputs) {
+        this.value = 0;
         this.index = index;
         this.numberOfInputs = numberOfInputs;
     }
@@ -45,5 +47,13 @@ public class AdditionalNeuron {
 
     public void setObjs(int[] objs) {
         this.objs = objs;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

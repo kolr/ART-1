@@ -26,6 +26,8 @@ public class Constants {
 //    public static final double P = 0.45;
     public static final double P = 0.8;
 
+    public static final int Q = 4;
+
     private Constants() {
         super();
     }
