@@ -1,6 +1,8 @@
 package org.components;
 
 import org.Constants;
+import org.components.neurons.AdditionalNeuron;
+import org.components.neurons.managing.AdditionalManager;
 import org.components.neurons.managing.GOne;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -43,6 +45,33 @@ public class Net {
             System.out.println("Cluster:" + searchCluster(object, in));
             System.out.println();
         }
+    }
+
+    public void startGroup(int[][] objects) {
+        AdditionalManager additionalManager = new AdditionalManager();
+        for (int i = 0; i < Constants.Q; i++) {
+            recognitionLayer.initializeStatuses();
+            printWeights(comparativeLayer.getBottomTopWeights());
+            System.out.println("Object");
+            for (int j = 0; j < Constants.N; j++) {
+                System.out.print(objects[i][j] + " ");
+            }
+            int gOneValue = gOne.activate(objects[i], recognitionLayer.getRecognitionLayerOutput());
+            if (gOneValue == 1) {
+                comparativeLayer.determineComparativeOutput(objects[i]);
+                double[] in = determineRecognitionLayerInput(comparativeLayer.getComparativeLayerOutput(), comparativeLayer.getBottomTopWeights());
+                int cluster = searchCluster(objects[i], in);
+                System.out.println("Cluster:" + cluster);
+                System.out.println();
+                additionalManager.addObjectClusterIndex(cluster);
+            }
+        }
+        AdditionalNeuron additionalNeuron = additionalManager.getNecessaryNeuron(additionalLayers);
+        System.out.println("Number of objects: " + (additionalManager.getCurrentIndex() - 1));
+        int[] objs = additionalManager.getObjects();
+        System.out.print("Clusters in group: ");
+        for (int i = 0; i < objs.length; i++)
+            System.out.print(objs[i]);
     }
 
     //TODO if all clusters blocked, return 0.

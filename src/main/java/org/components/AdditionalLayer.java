@@ -38,9 +38,9 @@ public class AdditionalLayer {
     }
 
     private void initializeNeuronMap() {
-        String[] names = Combinations.getAllLists(Combinations.generateStringArray(Constants.M), this.index);
-        for (int i = 0; i < names.length; i++) {
-            neurons.put(names[i], new AdditionalNeuron(i, this.index));
+//        String[] names = Combinations.getAllLists(Combinations.generateStringArray(Constants.M), this.index);
+        for (int i = 0; i < this.numberOfNeurons; i++) {
+            neurons.put(String.valueOf(i), new AdditionalNeuron(i, this.index));
         }
     }
 

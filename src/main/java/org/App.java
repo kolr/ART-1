@@ -19,12 +19,18 @@ public class App {
         int[] q4 = {1, 1, 0, 0, 0};
         int[] q5 = {1, 1, 0, 0, 0};
         int[] q6 = {0, 0, 1, 1, 0};
+
+        int[][] group = {{1, 1, 0, 0, 0}, {0, 0, 0, 1, 1}, {0, 0, 1, 1, 0}};
 //        Net net = new Net();
         Net net = (Net) applicationContext.getBean("net");
         net.start(q);
         net.start(q1);
         net.start(q2);
         net.start(q3);
+
+        System.out.println("\n\n\n group \n\n");
+
+        net.startGroup(group);
 //        net.start(q4);
 //        net.start(q5);
 //        net.start(q6);
