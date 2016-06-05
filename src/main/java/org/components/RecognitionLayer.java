@@ -53,7 +53,7 @@ public class RecognitionLayer {
                 continue;
             }
             // TODO: Error is here, max element in the array is determined not correctly. Use appropriate method.
-            if (input[i] > input[i - 1]) {
+            if (input[i] > input[cluster]) {
                 cluster = i;
             }
         }
