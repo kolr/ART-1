@@ -2,7 +2,6 @@ package org.components;
 
 import org.Constants;
 import org.components.neurons.managing.GOne;
-import org.components.neurons.managing.GTwo;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.inject.Inject;
@@ -23,9 +22,6 @@ public class Net {
     @Inject
     private GOne gOne;
 
-    @Inject
-    private GTwo gTwo;
-
     public void start(int[] object) {
         recognitionLayer.initializeStatuses();
         printWeights(comparativeLayer.getBottomTopWeights());
@@ -34,7 +30,6 @@ public class Net {
             System.out.print(object[i] + " ");
         }
         int gOneValue = gOne.activate(object, recognitionLayer.getRecognitionLayerOutput());
-        int gTwoValue = gTwo.activate(object);
         if (gOneValue == 1) {
             comparativeLayer.determineComparativeOutput(object);
             double[] in = determineRecognitionLayerInput(comparativeLayer.getComparativeLayerOutput(), comparativeLayer.getBottomTopWeights());

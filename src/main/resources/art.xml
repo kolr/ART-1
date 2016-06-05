@@ -13,7 +13,6 @@
     <bean id="comparativeLayer" class="org.components.ComparativeLayer"/>
     <bean id="recognitionLayer" class="org.components.RecognitionLayer"/>
     <bean id="gOne" class="org.components.neurons.managing.GOne"/>
-    <bean id="gTwo" class="org.components.neurons.managing.GTwo"/>
     <bean id="net" class="org.components.Net"/>
 
 </beans>
