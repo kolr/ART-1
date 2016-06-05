@@ -52,6 +52,7 @@ public class RecognitionLayer {
             if (neuronStatus[i] == -1) {
                 continue;
             }
+            // TODO: Error is here, max element in the array is determined not correctly. Use appropriate method.
             if (input[i] > input[i - 1]) {
                 cluster = i;
             }

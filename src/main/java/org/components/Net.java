@@ -23,6 +23,7 @@ public class Net {
 
     public void start(int[] object) {
         recognitionLayer.initializeStatuses();
+        printWeights(comparativeLayer.getBottomTopWeights());
         System.out.println("Object");
         for (int i = 0; i < object.length; i++) {
             System.out.print(object[i] + " ");
@@ -40,6 +41,8 @@ public class Net {
 
         int appropriateCluster = recognitionLayer.chooseCluster(in);
         int[] comparativeOutput = recognitionLayer.determineComparativeOutput(object, appropriateCluster);
+        System.out.println("Comparative output rank: " + getSumOfVector(comparativeOutput));
+        System.out.println("Object output rank: " + getSumOfVector(object));
         int similarity = getSumOfVector(comparativeOutput) / getSumOfVector(object);
         System.out.print(" similarity: " + similarity + " ");
         if (similarity < Constants.P) {
@@ -61,7 +64,7 @@ public class Net {
         for (int i = 0; i < Constants.M; i++) {
             result[i] = 0.0;
             for (int j = 0; j < Constants.N; j++) {
-                result[i] += (double) bottomTopWeights[i][j] * comparativeLayerOutput[j];
+                result[i] += bottomTopWeights[i][j] * comparativeLayerOutput[j];
             }
         }
         return result;
@@ -73,6 +76,15 @@ public class Net {
             res += vector[i];
         }
         return res;
+    }
+
+    private void printWeights(double[][] weightsMatrix) {
+        for (int i = 0; i < Constants.M; i++) {
+            for (int j = 0; j < Constants.N; j++) {
+                System.out.print(weightsMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
 }
